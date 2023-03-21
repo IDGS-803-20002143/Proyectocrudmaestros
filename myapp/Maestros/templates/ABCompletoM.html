@@ -1,0 +1,49 @@
+{% extends "layout.html"%}
+
+    {%block content%}
+            {%from "_macros.html" import render_field%}
+            <div class="page-header" style="text-align: center;">
+                <h2>Lista de Maestros</h2>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <a href="/maestros"
+                       class="btn btn-success">
+                        <i class="icon-pencil icon-white"></i> Agregar Maestro
+                    </a>
+                    <table class="table table">
+                        <thead>
+                            <tr>
+                                <th>Nombre Maestro</th>
+                                <th>Apellidos</th>
+                                <th>Correo</th>
+                                <th>Eliminar</th>
+                                <th>Modificar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for maes in maestro %}
+                            <tr>
+                                <td>{{ maes.nombre }}</td>
+                                <td>{{ maes.apellidos }}</td>
+                                <td>{{ maes.email }}</td>
+                                <td><a href="eliminarM?id={{ maes.id }}"
+                                    class="btn btn-danger">
+                                        <i class="icon-remove icon-white"></i> Eliminar
+                                    </a>
+                                </td>
+                                <td><a href="modificarM?id={{ maes.id }}"
+                                    class="btn btn-warning">
+                                        <i class="icon-pencil icon-white"></i> Modificar
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table> 
+                </div>
+            </div>
+            
+        </div>
+    {%endblock%}
